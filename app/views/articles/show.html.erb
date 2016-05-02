@@ -3,6 +3,12 @@
 <p>Author: <%= @user.email %></p>
 <p><%=@article.body%></p>
 
-<% if current_user && current_user == @user %>
+<% if current_user %>
+  <% if current_user == @user %>
   <p><%= link_to 'Edit', edit_article_path(@article) %> | <%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <% end %>
+
+<hr>
+  <%= render 'comments/form' %>
+
 <% end %>
