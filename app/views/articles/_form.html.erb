@@ -1,0 +1,15 @@
+<%= form_for @article do |f| %>
+<table>
+  <tr>
+    <td><%= f.label :title %></td>
+    <td><%= f.text_field :title%></td>
+  </tr>
+  <tr>
+    <td><%= f.label :body %></td>
+    <td><%= f.text_area :body%></td>
+  </tr>
+  <tr>
+    <td><%= f.submit %></td>
+  </tr>
+</table>
+<% end %>

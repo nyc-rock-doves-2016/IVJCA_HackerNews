@@ -2,6 +2,8 @@
 
 <ul>
   <% @users.each do |user| %>
-    <li><div class="user_wrapper"><%= link_to user.email, users_path(user) %></div></li>
+    <li><div class="user_wrapper"><%= link_to user.email, user_path(user) %></div></li>
+    <p><%= link_to 'Edit', edit_user_path(user) %> | <%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
   <% end %>
 </ul>

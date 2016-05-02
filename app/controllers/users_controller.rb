@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params.require(:user).permit(:email,:password))
     if @user.save
-      redirect_to users_path
+      session[:user_id] = @user.id
+      redirect_to articles_path
     else
       render 'new'
     end
@@ -19,7 +20,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    render 'edit'
   end
 
   def show
@@ -27,16 +27,8 @@ class UsersController < ApplicationController
     @articles = @user.articles
   end
 
-  # get users/:id/edit
-  def edit
-  end
-
   # post users/:id
-  def put
-    redirect_to user_path
-  end
-
-  def patch
+  def update
     redirect_to user_path
   end
 
@@ -44,7 +36,7 @@ class UsersController < ApplicationController
   def delete
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path
+    redirect_to articles_path
   end
 
 end
